@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compila, valida y mide. No inventa ni reemplaza tiempos obtenidos."""
+"""Compila los programas, comprueba los resultados y mide los tiempos."""
 import csv
 import json
 import os
@@ -8,13 +8,14 @@ import re
 import shlex
 import statistics
 import subprocess
+import tempfile
 
 HERE = Path(__file__).resolve().parent
 os.chdir(HERE)
 OUT = HERE.parent / 'resultados'
-EVID = HERE.parent / 'evidencias'
+EVID = HERE.parent / 'evidencias' / 'registros'
 OUT.mkdir(exist_ok=True)
-EVID.mkdir(exist_ok=True)
+EVID.mkdir(parents=True, exist_ok=True)
 MPI = ['mpirun'] + (['--allow-run-as-root'] if os.geteuid() == 0 else [])
 MPI += ['--bind-to', 'core']
 
@@ -38,6 +39,8 @@ def result(text):
     return float(re.search(r'Tiempo de busqueda: ([0-9.]+)', text)[1])
 
 def main():
+    temporary = tempfile.TemporaryDirectory(prefix='laboratorio3_')
+    test_dir = Path(temporary.name)
     _, log = run(['make', '-B'])
     evidence('01_compilacion', log)
     _, log = run(['./busqueda_clave_aes_secuencial'])
@@ -47,7 +50,7 @@ def main():
     test_count = 1
     cases = [(0,1,3,4), (6,7,3,2), (7,11,4,2), (32,33,2,7), (4097,4101,4,4096)]
     for i, (key, limit, n, batch) in enumerate(cases):
-        path = OUT / f'test_{i}.aes'
+        path = test_dir / f'test_{i}.aes'
         message = 'Mensaje de prueba con varios bloques y longitud variable.'
         _, l = run(['./busqueda_clave_aes_mejorada', 'preparar', str(path), str(key), message]); log += l
         a, l = run(seq(path, limit)); log += l
@@ -55,29 +58,30 @@ def main():
         for output in (a,b):
             assert f'Clave encontrada: {key}\n' in output and f'Mensaje: {message}\n' in output
         test_count += 1
-    path = OUT / 'fuera_rango.aes'
+    path = test_dir / 'fuera_rango.aes'
     _, l = run(['./busqueda_clave_aes_mejorada','preparar',str(path),'100','Clave fuera del rango']); log += l
     for args in (seq(path,17), mpi(path,17,3,4), mpi(path,17,4,7)):
         text, l = run(args,2); log += l
         assert 'Candidatas probadas: 17\n' in text and 'No se encontro' in text
         test_count += 1
     # Una etiqueta alterada debe rechazarse aunque el cifrado sea valido.
-    path = OUT / 'test_0.aes'
+    path = test_dir / 'test_0.aes'
     lines = path.read_text().splitlines()
     lines[3] = ('1' if lines[3][0] != '1' else '2') + lines[3][1:]
-    bad = OUT / 'alterado.aes'; bad.write_text('\n'.join(lines)+'\n')
+    bad = test_dir / 'alterado.aes'; bad.write_text('\n'.join(lines)+'\n')
     for args in (seq(bad,4), mpi(bad,4,3,1)):
         text, l = run(args,2); log += l
         assert 'No se encontro' in text
         test_count += 1
-    for args in (seq(path,0), seq(path,-1), mpi(path,0,3), mpi(OUT/'no_existe.aes',10,2)):
+    for args in (seq(path,0), seq(path,-1), mpi(path,0,3), mpi(test_dir/'no_existe.aes',10,2)):
         _, l = run(args,1); log += l; test_count += 1
     for length in (1,4096):
-        path = OUT / f'longitud_{length}.aes'; message = 'x'*length
+        path = test_dir / f'longitud_{length}.aes'; message = 'x'*length
         run(['./busqueda_clave_aes_mejorada','preparar',str(path),'2',message])
         for args in (seq(path,3),mpi(path,3,2,1)):
             text,_ = run(args); assert f'Mensaje: {message}\n' in text
         test_count += 1
+    temporary.cleanup()
     evidence('07_pruebas_completas', log)
     evidence('07_pruebas_resumen', '$ python3 evaluar.py\n'
         + f'PASS: {test_count} comprobaciones funcionales.\n'
