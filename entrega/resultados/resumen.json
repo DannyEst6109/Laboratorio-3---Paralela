@@ -1,0 +1,37 @@
+{
+  "pruebas": 17,
+  "resultados": [
+    {
+      "procesos": 1,
+      "mediana": 1.159431161,
+      "minimo": 0.81717897,
+      "maximo": 1.193236577,
+      "speedup": 1.0,
+      "eficiencia": 1.0
+    },
+    {
+      "procesos": 2,
+      "mediana": 0.569206978,
+      "minimo": 0.471559397,
+      "maximo": 0.63819729,
+      "speedup": 2.0369236601312366,
+      "eficiencia": 1.0184618300656183
+    },
+    {
+      "procesos": 3,
+      "mediana": 0.597680058,
+      "minimo": 0.565751353,
+      "maximo": 0.62088358,
+      "speedup": 1.9398859732408875,
+      "eficiencia": 0.6466286577469625
+    },
+    {
+      "procesos": 4,
+      "mediana": 0.375598128,
+      "minimo": 0.352587601,
+      "maximo": 0.399767174,
+      "speedup": 3.086892810605276,
+      "eficiencia": 0.771723202651319
+    }
+  ]
+}

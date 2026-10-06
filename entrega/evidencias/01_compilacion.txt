@@ -1,0 +1,5 @@
+$ make -B
+gcc -std=c11 -O2 -Wall -Wextra -Wpedantic busqueda_clave_aes_secuencial.c -o busqueda_clave_aes_secuencial -lcrypto
+gcc -std=c11 -O2 -Wall -Wextra -Wpedantic busqueda_clave_aes_mejorada.c -o busqueda_clave_aes_mejorada -lcrypto
+mpicc -std=c11 -O2 -Wall -Wextra -Wpedantic busqueda_clave_aes_mpi.c -o busqueda_clave_aes_mpi -lcrypto
+[codigo de salida: 0]

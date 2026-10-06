@@ -1,0 +1,5 @@
+$ ./busqueda_clave_aes_mejorada preparar ../resultados/datos.aes 1048575 'Puedes lograrlo!'
+Datos AES-128-GCM guardados: ../resultados/datos.aes
+Longitud: 16 bytes
+El archivo no contiene la clave ni el texto original.
+[codigo de salida: 0]

@@ -1,0 +1,19 @@
+<!doctype html><html lang="es"><meta charset="utf-8">
+<title>Laboratorio 03 - Evidencia</title><style>
+body{margin:24px;background:#fff;color:#151515;font-family:Arial,sans-serif}
+main{width:1020px;padding:18px;border:1px solid #ccc;box-sizing:border-box}
+h1{font-size:24px;margin:0 0 8px}p{font-size:15px;margin:0 0 14px;color:#555}
+pre{font:19px/1.5 Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;
+background:#f4f5f7;padding:16px;margin:0}small{display:block;margin-top:12px;font-size:14px;color:#555}
+</style><main><h1>Búsqueda con cuatro procesos</h1>
+<p>Laboratorio 03 · Ubuntu en WSL · Registro real de comandos y resultados</p>
+<pre>$ mpirun --allow-run-as-root --bind-to core -n 4 ./busqueda_clave_aes_mpi ../resultados/datos.aes 1048576 4096
+Ejecucion: Open MPI | Procesos: 4
+Candidatas probadas: 1048576
+Clave encontrada: 1048575
+Clave AES (hex): 000000000000000000000000000fffff
+Mensaje: Puedes lograrlo!
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.375598128 segundos
+[codigo de salida: 0]
+</pre><small>Fuente: 05_mpi_4.txt · Salida capturada de los programas, visualizada en Chrome.</small></main></html>

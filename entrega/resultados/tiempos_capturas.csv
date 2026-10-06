@@ -1,0 +1,6 @@
+version,procesos,segundos,speedup
+original,1,0.009547,
+secuencial_mejorada,1,1.056688770,1.000000000
+mpi,2,0.574145790,1.840453746
+mpi,3,0.541838446,1.950191571
+mpi,4,0.516579520,2.045549096

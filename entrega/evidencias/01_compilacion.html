@@ -1,0 +1,15 @@
+<!doctype html><html lang="es"><meta charset="utf-8">
+<title>Laboratorio 03 - Evidencia</title><style>
+body{margin:24px;background:#fff;color:#151515;font-family:Arial,sans-serif}
+main{width:1020px;padding:18px;border:1px solid #ccc;box-sizing:border-box}
+h1{font-size:24px;margin:0 0 8px}p{font-size:15px;margin:0 0 14px;color:#555}
+pre{font:19px/1.5 Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;
+background:#f4f5f7;padding:16px;margin:0}small{display:block;margin-top:12px;font-size:14px;color:#555}
+</style><main><h1>Compilación de los tres programas</h1>
+<p>Laboratorio 03 · Ubuntu en WSL · Registro real de comandos y resultados</p>
+<pre>$ make -B
+gcc -std=c11 -O2 -Wall -Wextra -Wpedantic busqueda_clave_aes_secuencial.c -o busqueda_clave_aes_secuencial -lcrypto
+gcc -std=c11 -O2 -Wall -Wextra -Wpedantic busqueda_clave_aes_mejorada.c -o busqueda_clave_aes_mejorada -lcrypto
+mpicc -std=c11 -O2 -Wall -Wextra -Wpedantic busqueda_clave_aes_mpi.c -o busqueda_clave_aes_mpi -lcrypto
+[codigo de salida: 0]
+</pre><small>Fuente: 01_compilacion.txt · Salida capturada de los programas, visualizada en Chrome.</small></main></html>

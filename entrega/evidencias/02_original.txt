@@ -1,0 +1,6 @@
+$ ./busqueda_clave_aes_secuencial
+Clave encontrada: 12345
+Mensaje: Puedes lograrlo!
+Ejecucion: secuencial
+Tiempo: 0.011494 segundos
+[codigo de salida: 0]

@@ -1,0 +1,9 @@
+$ mpirun --allow-run-as-root --bind-to core -n 2 ./busqueda_clave_aes_mpi ../resultados/datos.aes 1048576 4096
+Ejecucion: Open MPI | Procesos: 2
+Candidatas probadas: 1048576
+Clave encontrada: 1048575
+Clave AES (hex): 000000000000000000000000000fffff
+Mensaje: Puedes lograrlo!
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.602740745 segundos
+[codigo de salida: 0]

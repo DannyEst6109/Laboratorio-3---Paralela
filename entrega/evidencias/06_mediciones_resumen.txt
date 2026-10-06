@@ -1,0 +1,7 @@
+$ python3 evaluar.py
+Resultados: 5 repeticiones por configuracion; mediana.
+Procesos  Tiempo (s)  Speedup  Eficiencia
+       1    1.159431    1.000    100.00%
+       2    0.569207    2.037    101.85%
+       3    0.597680    1.940     64.66%
+       4    0.375598    3.087     77.17%

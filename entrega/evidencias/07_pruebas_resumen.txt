@@ -1,0 +1,5 @@
+$ python3 evaluar.py
+PASS: 17 comprobaciones funcionales.
+Vector GCM; etiqueta alterada; claves inicial, intermedia y final;
+rangos no divisibles; mas procesos que candidatas; mensajes de 1 y 4096 bytes;
+rango agotado (17 candidatas); entradas invalidas; archivo inexistente.

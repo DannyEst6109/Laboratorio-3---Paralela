@@ -1,0 +1,9 @@
+$ ./busqueda_clave_aes_mejorada buscar ../resultados/datos.aes 1048576
+Ejecucion: secuencial mejorada | Procesos: 1
+Candidatas probadas: 1048576
+Clave encontrada: 1048575
+Clave AES (hex): 000000000000000000000000000fffff
+Mensaje: Puedes lograrlo!
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.817178970 segundos
+[codigo de salida: 0]

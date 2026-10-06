@@ -1,0 +1,211 @@
+$ gcc -std=c11 -O2 -Wall -Wextra -Wpedantic test_aes.c -o test_aes -lcrypto
+[codigo de salida: 0]
+$ ./test_aes
+PASS: vector AES-128-GCM y rechazo de etiqueta alterada.
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada preparar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_0.aes 0 'Mensaje de prueba con varios bloques y longitud variable.'
+Datos AES-128-GCM guardados: /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_0.aes
+Longitud: 57 bytes
+El archivo no contiene la clave ni el texto original.
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada buscar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_0.aes 1
+Ejecucion: secuencial mejorada | Procesos: 1
+Candidatas probadas: 1
+Clave encontrada: 0
+Clave AES (hex): 00000000000000000000000000000000
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.003001455 segundos
+[codigo de salida: 0]
+$ mpirun --allow-run-as-root --bind-to core -n 3 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_0.aes 1 4
+Ejecucion: Open MPI | Procesos: 3
+Candidatas probadas: 1
+Clave encontrada: 0
+Clave AES (hex): 00000000000000000000000000000000
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.003235462 segundos
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada preparar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_1.aes 6 'Mensaje de prueba con varios bloques y longitud variable.'
+Datos AES-128-GCM guardados: /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_1.aes
+Longitud: 57 bytes
+El archivo no contiene la clave ni el texto original.
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada buscar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_1.aes 7
+Ejecucion: secuencial mejorada | Procesos: 1
+Candidatas probadas: 7
+Clave encontrada: 6
+Clave AES (hex): 00000000000000000000000000000006
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.002247169 segundos
+[codigo de salida: 0]
+$ mpirun --allow-run-as-root --bind-to core -n 3 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_1.aes 7 2
+Ejecucion: Open MPI | Procesos: 3
+Candidatas probadas: 7
+Clave encontrada: 6
+Clave AES (hex): 00000000000000000000000000000006
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.002558771 segundos
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada preparar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_2.aes 7 'Mensaje de prueba con varios bloques y longitud variable.'
+Datos AES-128-GCM guardados: /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_2.aes
+Longitud: 57 bytes
+El archivo no contiene la clave ni el texto original.
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada buscar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_2.aes 11
+Ejecucion: secuencial mejorada | Procesos: 1
+Candidatas probadas: 8
+Clave encontrada: 7
+Clave AES (hex): 00000000000000000000000000000007
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.002636057 segundos
+[codigo de salida: 0]
+$ mpirun --allow-run-as-root --bind-to core -n 4 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_2.aes 11 2
+Ejecucion: Open MPI | Procesos: 4
+Candidatas probadas: 8
+Clave encontrada: 7
+Clave AES (hex): 00000000000000000000000000000007
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.004255798 segundos
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada preparar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_3.aes 32 'Mensaje de prueba con varios bloques y longitud variable.'
+Datos AES-128-GCM guardados: /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_3.aes
+Longitud: 57 bytes
+El archivo no contiene la clave ni el texto original.
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada buscar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_3.aes 33
+Ejecucion: secuencial mejorada | Procesos: 1
+Candidatas probadas: 33
+Clave encontrada: 32
+Clave AES (hex): 00000000000000000000000000000020
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.002339186 segundos
+[codigo de salida: 0]
+$ mpirun --allow-run-as-root --bind-to core -n 2 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_3.aes 33 7
+Ejecucion: Open MPI | Procesos: 2
+Candidatas probadas: 33
+Clave encontrada: 32
+Clave AES (hex): 00000000000000000000000000000020
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.003341276 segundos
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada preparar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_4.aes 4097 'Mensaje de prueba con varios bloques y longitud variable.'
+Datos AES-128-GCM guardados: /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_4.aes
+Longitud: 57 bytes
+El archivo no contiene la clave ni el texto original.
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada buscar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_4.aes 4101
+Ejecucion: secuencial mejorada | Procesos: 1
+Candidatas probadas: 4098
+Clave encontrada: 4097
+Clave AES (hex): 00000000000000000000000000001001
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.006663600 segundos
+[codigo de salida: 0]
+$ mpirun --allow-run-as-root --bind-to core -n 4 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_4.aes 4101 4096
+Ejecucion: Open MPI | Procesos: 4
+Candidatas probadas: 4098
+Clave encontrada: 4097
+Clave AES (hex): 00000000000000000000000000001001
+Mensaje: Mensaje de prueba con varios bloques y longitud variable.
+Autenticacion GCM: correcta
+Tiempo de busqueda: 0.011632256 segundos
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada preparar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/fuera_rango.aes 100 'Clave fuera del rango'
+Datos AES-128-GCM guardados: /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/fuera_rango.aes
+Longitud: 21 bytes
+El archivo no contiene la clave ni el texto original.
+[codigo de salida: 0]
+$ ./busqueda_clave_aes_mejorada buscar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/fuera_rango.aes 17
+Ejecucion: secuencial mejorada | Procesos: 1
+Candidatas probadas: 17
+No se encontro la clave en el rango.
+Tiempo de busqueda: 0.004779807 segundos
+[codigo de salida: 2]
+$ mpirun --allow-run-as-root --bind-to core -n 3 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/fuera_rango.aes 17 4
+Ejecucion: Open MPI | Procesos: 3
+Candidatas probadas: 17
+No se encontro la clave en el rango.
+Tiempo de busqueda: 0.004145558 segundos
+--------------------------------------------------------------------------
+Sorry!  You were supposed to get help about:
+    prun:non-zero-exit
+But I couldn't open the help file:
+    /usr/lib/x86_64-linux-gnu/pmix2/share/pmix/help-prun.txt: No such file or directory
+    /usr/lib/x86_64-linux-gnu/prrte3/share/prte/help-prun.txt: No such file or directory.
+Sorry!
+--------------------------------------------------------------------------
+ [codigo de salida: 2]
+$ mpirun --allow-run-as-root --bind-to core -n 4 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/fuera_rango.aes 17 7
+Ejecucion: Open MPI | Procesos: 4
+Candidatas probadas: 17
+No se encontro la clave en el rango.
+Tiempo de busqueda: 0.003444072 segundos
+--------------------------------------------------------------------------
+Sorry!  You were supposed to get help about:
+    prun:non-zero-exit
+But I couldn't open the help file:
+    /usr/lib/x86_64-linux-gnu/pmix2/share/pmix/help-prun.txt: No such file or directory
+    /usr/lib/x86_64-linux-gnu/prrte3/share/prte/help-prun.txt: No such file or directory.
+Sorry!
+--------------------------------------------------------------------------
+ [codigo de salida: 2]
+$ ./busqueda_clave_aes_mejorada buscar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/alterado.aes 4
+Ejecucion: secuencial mejorada | Procesos: 1
+Candidatas probadas: 4
+No se encontro la clave en el rango.
+Tiempo de busqueda: 0.002262475 segundos
+[codigo de salida: 2]
+$ mpirun --allow-run-as-root --bind-to core -n 3 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/alterado.aes 4 1
+Ejecucion: Open MPI | Procesos: 3
+Candidatas probadas: 4
+No se encontro la clave en el rango.
+Tiempo de busqueda: 0.003619301 segundos
+--------------------------------------------------------------------------
+Sorry!  You were supposed to get help about:
+    prun:non-zero-exit
+But I couldn't open the help file:
+    /usr/lib/x86_64-linux-gnu/pmix2/share/pmix/help-prun.txt: No such file or directory
+    /usr/lib/x86_64-linux-gnu/prrte3/share/prte/help-prun.txt: No such file or directory.
+Sorry!
+--------------------------------------------------------------------------
+ [codigo de salida: 2]
+$ ./busqueda_clave_aes_mejorada buscar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_0.aes 0
+Argumentos invalidos. Limite permitido: 1 a 4294967296.
+[codigo de salida: 1]
+$ ./busqueda_clave_aes_mejorada buscar /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_0.aes -1
+Uso:
+  ./busqueda_clave_aes_mejorada preparar archivo clave [mensaje]
+  ./busqueda_clave_aes_mejorada buscar archivo limite
+[codigo de salida: 1]
+$ mpirun --allow-run-as-root --bind-to core -n 3 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/test_0.aes 0 4096
+Uso: ./busqueda_clave_aes_mpi archivo limite [lote]
+Archivo o argumentos invalidos.
+--------------------------------------------------------------------------
+Sorry!  You were supposed to get help about:
+    prun:non-zero-exit
+But I couldn't open the help file:
+    /usr/lib/x86_64-linux-gnu/pmix2/share/pmix/help-prun.txt: No such file or directory
+    /usr/lib/x86_64-linux-gnu/prrte3/share/prte/help-prun.txt: No such file or directory.
+Sorry!
+--------------------------------------------------------------------------
+ [codigo de salida: 1]
+$ mpirun --allow-run-as-root --bind-to core -n 2 ./busqueda_clave_aes_mpi /mnt/c/Users/carlos.estrada/Documents/U/Laboratorio-3---Paralela/entrega/resultados/no_existe.aes 10 4096
+Uso: ./busqueda_clave_aes_mpi archivo limite [lote]
+Archivo o argumentos invalidos.
+--------------------------------------------------------------------------
+Sorry!  You were supposed to get help about:
+    prun:non-zero-exit
+But I couldn't open the help file:
+    /usr/lib/x86_64-linux-gnu/pmix2/share/pmix/help-prun.txt: No such file or directory
+    /usr/lib/x86_64-linux-gnu/prrte3/share/prte/help-prun.txt: No such file or directory.
+Sorry!
+--------------------------------------------------------------------------
+ [codigo de salida: 1]
